@@ -22,7 +22,7 @@ public class Task2 {
     System.out.println("Количество символов в строке без пробелов: "+countWithoutSpaces(str));
     if (even(str)) System.out.println("Количество символов в строке (учитывая пробелы) чётное");
     else System.out.println("Количество символов в строке (учитывая пробелы) нечётное");
-    if (str.length() > maxLength) System.out.println("Длина введённой строки превышает максимальное число символов");
+    if (str.length() > maxLength) System.out.println("Длина введённой строки превышает "+maxLength+ " символов");
   }
 
   public static int countWithoutSpaces(String str){
