@@ -14,12 +14,11 @@ public class Task1 {
     LocalTime twentyThreeOClock = LocalTime.of(23, 59);
     //Текущее время с компьютера
     LocalTime now = LocalTime.now();
-    System.out.println("По часам компьютера сейчас: " + now);
     //проверяем часы с компьютера
     if (now.isAfter(zeroOClock) && now.isBefore(fourOClock)) System.out.println("Доброй ночи, Костег!");
     else if (now.isAfter(fiveOClock)&& now.isBefore(nineOClock)) System.out.println("Доброе утро, Костег!");
     else if (now.isAfter(tenOClock) && now.isBefore(sixteenOClock)) System.out.println("Добрый день, Костег!");
     else if (now.isAfter(seventeenOClock) && now.isBefore(twentyThreeOClock)) System.out.println("Добрый вечер, Костег!");
-
+    else System.out.println("По часам компьютера сейчас: " + now + ". Не удалось определить время суток.");
   }
 }

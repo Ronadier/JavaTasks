@@ -29,17 +29,15 @@ public class Task1hard {
     in.close();
     //Разделим ответ на строки, потом из них получим строку времени
     String[] subStr;
-    String delimeter = ","; // Разделитель
-    subStr = response.toString().split(delimeter);
+    subStr = response.toString().split(",");
     String[] words = subStr[2].split("T"); // Разбиение строки на слова с помощью разграничителя "T"
     String[] currTimeAPIStr = words[1].split("\\+"); // получаем строку времени, индекс 0
     LocalTime nowAPI = LocalTime.parse(currTimeAPIStr[0]);
-
-    System.out.println("По часам с сервера сейчас: " + nowAPI);
 
     if (nowAPI.isAfter(zeroOClock) && nowAPI.isBefore(fourOClock)) System.out.println("Доброй ночи, Костег!");
     else if (nowAPI.isAfter(fiveOClock)&& nowAPI.isBefore(nineOClock)) System.out.println("Доброе утро, Костег!");
     else if (nowAPI.isAfter(tenOClock) && nowAPI.isBefore(sixteenOClock)) System.out.println("Добрый день, Костег!");
     else if (nowAPI.isAfter(seventeenOClock) && nowAPI.isBefore(twentyThreeOClock)) System.out.println("Добрый вечер, Костег!");
+    else System.out.println("По часам с сервера сейчас: " + nowAPI + ". Не удалось определить время суток.");
   }
 }
