@@ -8,7 +8,7 @@ public class Task2 {
     int maxLength = readInt();
     String str = readStr();
 
-    printStringLenth(str);
+    printStringLength(str);
     printStringWithoutSpaces(str);
     printEvenOrNotEvenString(str);
     printIsStringLengthMoreMax(str, maxLength);
@@ -46,11 +46,10 @@ public class Task2 {
   }
 
   public static boolean isStringLengthEven(String str){
-    if (str.length() % 2 == 0) return true;
-    else return false;
+    return str.length() % 2 == 0;
   }
 
-  public static void printStringLenth(String str){
+  public static void printStringLength(String str){
     System.out.println("Количество символов в строке: " + str.length());
   }
 
