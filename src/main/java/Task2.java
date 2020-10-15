@@ -5,8 +5,8 @@ import java.io.InputStreamReader;
 public class Task2 {
   public static void main(String[] args) throws IOException {
 
-    int maxLength = readInt();
-    String str = readStr();
+    int maxLength = getInt();
+    String str = getStr();
 
     printStringLength(str);
     printStringWithoutSpaces(str);
@@ -14,7 +14,7 @@ public class Task2 {
     printIsStringLengthMoreMax(str, maxLength);
   }
 
-  public static int readInt() throws IOException {
+  private static int getInt() throws IOException {
     BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     int maxLength = 0;
     while (maxLength <= 0) {
@@ -25,7 +25,7 @@ public class Task2 {
     return maxLength;
   }
 
-  public static String readStr() throws IOException {
+  private static String getStr() throws IOException {
     BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     String str = "";
     while (str.length() == 0) {
@@ -36,7 +36,7 @@ public class Task2 {
     return str;
   }
 
-  public static int getLengthWithoutSpaces(String str){
+  private static int getLengthWithoutSpaces(String str){
     String[] words = str.split("\\s"); // Разбиение строки на слова с помощью разграничителя (пробел)
     int length = 0;
     for (String s : words){
@@ -45,24 +45,24 @@ public class Task2 {
     return length;
   }
 
-  public static boolean isStringLengthEven(String str){
+  private static boolean isStringLengthEven(String str){
     return str.length() % 2 == 0;
   }
 
-  public static void printStringLength(String str){
+  private static void printStringLength(String str){
     System.out.println("Количество символов в строке: " + str.length());
   }
 
-  public static void printStringWithoutSpaces(String str){
+  private static void printStringWithoutSpaces(String str){
     System.out.println("Количество символов в строке без пробелов: "+ getLengthWithoutSpaces(str));
   }
 
-  public static void printEvenOrNotEvenString (String str){
+  private static void printEvenOrNotEvenString (String str){
     if (isStringLengthEven(str)) System.out.println("Количество символов в строке (учитывая пробелы) чётное");
     else System.out.println("Количество символов в строке (учитывая пробелы) нечётное");
   }
 
-  public static void printIsStringLengthMoreMax(String str, int maxLength){
+  private static void printIsStringLengthMoreMax(String str, int maxLength){
     if (str.length() > maxLength) System.out.println("Длина введённой строки превышает "+maxLength+ " символов");
   }
 }
