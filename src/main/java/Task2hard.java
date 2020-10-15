@@ -6,15 +6,15 @@ import java.util.List;
 
 public class Task2hard {
   public static void main(String[] args) throws IOException {
-    BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     String str = getStr();
     int maxLength = getInt();
-    List<String> bannedWords = new ArrayList<>();
-    bannedWords = getBanned();
+    List<String> forbiddenWords = getForbiddenWords();
+
+    generateAndPrintJSON(str,forbiddenWords,maxLength);
 
   }
 
-  private static List<String> getBanned() throws IOException {
+  private static List<String> getForbiddenWords() throws IOException {
     BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     List<String> str = new ArrayList<>();
     System.out.println("Вы хотите ввести запрещённое слово? (+ если да)");
@@ -64,15 +64,34 @@ public class Task2hard {
     return length;
   }
 
-  private static void generateAndPrintJSON(String str){
+  private static String replaceForbiddenWords(String str,List<String> forbiddenWords){
+    String replace = str;
+    for (String f : forbiddenWords){
+      System.out.println("Было " + str);
+       replace = str.replace(f,"***");
+      }
+    return replace;
+    }
+
+    private static String getShortText(String str, int maxLength){
+    String replace = str.substring(0,maxLength);
+    if (replace.equals(str)) return str;
+    else {
+      replace = replace + "...";
+      return replace;
+    }
+    }
+
+  private static void generateAndPrintJSON(String str,List<String> forbiddenWords,int maxLength){
     // convert Java to json
-    JSONObject root = new JSONObject(); // создаем главный объект
-    root.put("message", "Hi");
-    JSONObject place = new JSONObject(); // создаем объект Place
-    place.put("name", "World!");
-    root.put("place", place); // сохраняем объект Place в поле place
+    JSONObject root = new JSONObject(); // создаем главный объект JSON
+    root.put("length", str.length());
+    root.put("pure_length", getLengthWithoutSpaces(str));
+    root.put("origin_text", str);
+    root.put("pure_text", replaceForbiddenWords(str,forbiddenWords));
+    root.put("pure_short_text", getShortText(str, maxLength));
     String json = root.toString();
-    System.out.println(json); // напечатает "{"message":"Hi","place":{"name":"World!"}}"
+    System.out.println(json);
 
   }
 }
