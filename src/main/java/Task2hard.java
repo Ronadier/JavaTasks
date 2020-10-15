@@ -67,18 +67,17 @@ public class Task2hard {
   private static String replaceForbiddenWords(String str,List<String> forbiddenWords){
     String replace = str;
     for (String f : forbiddenWords){
-      System.out.println("Было " + str);
        replace = str.replace(f,"***");
       }
     return replace;
     }
 
     private static String getShortText(String str, int maxLength){
-    String replace = str.substring(0,maxLength);
-    if (replace.equals(str)) return str;
+    if (str.length() <= maxLength ) return str;
     else {
-      replace = replace + "...";
-      return replace;
+    String replace = str.substring(0,maxLength);
+    replace = replace + "...";
+    return replace;
     }
     }
 
