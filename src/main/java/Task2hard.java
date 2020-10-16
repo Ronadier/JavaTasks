@@ -67,7 +67,7 @@ public class Task2hard {
   private static String replaceForbiddenWords(String str,List<String> forbiddenWords){
     String replace = str;
     for (String f : forbiddenWords){
-       replace = str.replace(f,"***");
+       replace = replace.replace(f,"***");
       }
     return replace;
     }
