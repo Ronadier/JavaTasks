@@ -4,8 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class Task3hard {
   public static void main(String[] args) throws IOException {
@@ -37,12 +35,12 @@ public class Task3hard {
     return maxAmount;
   }
 
-  private static Map<String, Integer> getWordsAndAmount(String str, int maxAmount){
+  private static HashMap<String, Integer> getWordsAndAmount(String str, int maxAmount){
     String a = str.toLowerCase().trim();
     String[] subStr;
     subStr = a.split("(?U)\\W+"); //разбиваем на слова. W+ - регулярное выражение для всех знаков препинания, пробелов и пр., (?U) для поддержки юникода
     int[] c = new int[subStr.length];
-    Map<String, Integer> result = new HashMap<String, Integer>();
+    HashMap<String, Integer> result = new HashMap<>();
     for (int i =0;i<subStr.length;i++) {
       for (int j=i;j<subStr.length;j++){
        if (subStr[i].equals(subStr[j])) c[i]++;
@@ -56,11 +54,10 @@ public class Task3hard {
   private static void generateAndPrintJSON(String str, int maxAmount){
     // convert Java to json
     JSONObject root = new JSONObject(); // создаем главный объект JSON
-    HashMap<String, Integer> a = (HashMap<String, Integer>) getWordsAndAmount(str, maxAmount);
-    a.forEach((k, v) -> root.put(k,v)); //кладём мапу в JSON
+    HashMap<String, Integer> a = getWordsAndAmount(str, maxAmount);
+    a.forEach(root::put); //кладём мапу в JSON, можно так же записать a.forEach((k, v) -> root.put(k,v))
     String json = root.toString();
     System.out.println(json);
-
   }
 }
 
