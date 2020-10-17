@@ -14,10 +14,10 @@ public class Task5hard {
     String salt = getSalt(str); //Получаем соль
     String strWithSalt = str + salt; //Получаем строку+соль
     String hash = md5Apache(strWithSalt); //Получаем хэш
-
     String fileName = "hash.txt";
-
-    writeToFile(fileName, str, salt, hash);
+    System.out.println("Введите строку для поиска хэша");
+    String hashToFunc = md5Apache(reader.readLine());
+    writeToFile(fileName, str, salt, hashToFunc);
 
     isFileContainsHash(fileName,hash);
 

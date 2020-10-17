@@ -10,3 +10,12 @@ Hash: 325f18b8f49e4dc0fff538f8978b215a
 String: 021
 Salt: /10
 Hash: 94f13c2934a8dd80bcfa34d246ecf28d
+String: 123
+Salt: 012
+Hash: d2490f048dc3b77a457e3e450ab4eb38
+String: 1
+Salt: 0
+Hash: cfcd208495d565ef66e7dff9f98764da
+String: 123
+Salt: 012
+Hash: bcd3b9ca986faaffb07dc3bbb1b78da6
