@@ -55,16 +55,22 @@ public class Task5hard {
   private static void isFileContainsHash (String fileName, String hash) throws IOException {
     List<String> s = Files.readAllLines(Paths.get(fileName));
     boolean isContains = false;
-    for (int i = 0;i<s.size();i++){
-     if (s.get(i).contains(hash)){
-       System.out.println(); //Пустая строка для красоты
-       System.out.println(s.get(i));
-       System.out.println(s.get(i-1));
-       System.out.println(s.get(i-2));
-       isContains = true;
-     }
+    try {
+      for (int i = 0; i < s.size(); i++) {
+        if (s.get(i).contains(hash)) {
+          System.out.println(); //Пустая строка для красоты
+          System.out.println(s.get(i));
+          System.out.println(s.get(i - 1));
+          System.out.println(s.get(i - 2));
+          isContains = true;
+        }
+      }
+      if (!isContains) {
+        int aw = 2/0;
+      }
+    } catch (ArithmeticException e) {
+      System.out.println("Сорян, хэша нет");
     }
-    if (!isContains) System.out.println("Сорян, хэша нет");
   }
 }
 

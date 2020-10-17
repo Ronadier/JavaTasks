@@ -19,3 +19,9 @@ Hash: cfcd208495d565ef66e7dff9f98764da
 String: 123
 Salt: 012
 Hash: bcd3b9ca986faaffb07dc3bbb1b78da6
+String: asd
+Salt: `rc
+Hash: 0cc175b9c0f1b6a831c399e269772661
+String: qwe
+Salt: pvd
+Hash: 03c7c0ace395d80182db07ae2c30f034
