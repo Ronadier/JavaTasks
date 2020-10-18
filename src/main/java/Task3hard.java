@@ -18,7 +18,7 @@ public class Task3hard {
     List<String> subStr = Arrays.asList(a.split("(?U)\\W+")); //разбиваем на слова. W+ - регулярное выражение для всех знаков препинания, пробелов и пр., (?U) для поддержки юникода
     HashMap<String, Integer> result = new HashMap<>();
     for (String s : subStr ){
-      if (Collections.frequency(subStr, s) > maxAmount) {
+      if (Collections.frequency(subStr, s) > maxAmount) { //считаем кол-во вхождений, и если оно больше мах, то добавляем в мапу
         result.put(s, Collections.frequency(subStr, s));
       }
     }
