@@ -10,30 +10,30 @@ public class Task4hard {
     BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     List<Integer> a = InputHelper.getIntList();
     int n;
-    List<Integer> b = new ArrayList<>();
     System.out.println("Введите число N");
     n = Integer.parseInt(reader.readLine());
+    if (isSumTrue(a,n)) System.out.println("True");
+    else System.out.println("False");
+  }
+
+  private static boolean isSumTrue(List<Integer> a, int n){
+    List<Integer> b = new ArrayList<>();
     for (Integer integer : a) { //Т.к. высчитать одно из слагаемых можно с помощью разности
       Integer difference = n - integer; //то делаем лист с элементами сумма-одно из слагаемых (n-a)
       b.add(difference);
     }
     //дальше - жесть :)
-    boolean isSumTrue = false;
     for (int i = 0;i< a.size();i++){
       if (b.contains(a.get(i)) && !b.get(i).equals(a.get(i))) { //Если лист с разностью содержит элемент a и при этом они не находятся на одной позиции в листе
-        System.out.println("True"); //то всё ок
-        isSumTrue = true;
-        break;
+        return true; //то всё ок
       } else{
         b.set(i, null); //а тут обрабатываем ситуацию, когда мы вводим два одинаковых числа, но сумма их даёт искомый N
         if (b.contains(a.get(i))) { //если одно из чисел обнуляем, но ещё одно такое же осталось - значит всё ок, а если нет - значит это просто случайно попалась сумма одного числа (например N=8, a=4)
-          System.out.println("True");
-          isSumTrue = true;
-          break;
+          return true;
         }
       }
     }
-    if (!isSumTrue) System.out.println("False");
+    return false;
   }
 }
 
