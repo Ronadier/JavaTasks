@@ -1,15 +1,12 @@
-import java.io.BufferedReader;
+import Helpers.InputHelper;
+
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Task5 {
   public static void main(String[] args) throws IOException {
-
-    BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-    System.out.println("Введите строку");
-    String str = reader.readLine();
+    String str = InputHelper.getStr();
     String s = encode(str);
     System.out.println(); //отступ для красоты
     System.out.println("Зашифрованная строка: ");

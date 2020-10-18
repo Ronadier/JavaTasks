@@ -1,3 +1,4 @@
+import Helpers.InputHelper;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import java.io.*;
@@ -8,7 +9,7 @@ import java.util.List;
 public class Task5hard {
   public static void main(String[] args) throws IOException {
     BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-    String str = reader.readLine();
+    String str = InputHelper.getStr();
     System.out.println("Хэш до засолки");
     System.out.println(md5Apache(str));
     String salt = getSalt(str); //Получаем соль
@@ -17,9 +18,9 @@ public class Task5hard {
     String fileName = "hash.txt";
     System.out.println("Введите строку для поиска хэша");
     String hashToFunc = md5Apache(reader.readLine());
-    writeToFile(fileName, str, salt, hashToFunc);
+    writeToFile(fileName, str, salt, hash);
 
-    isFileContainsHash(fileName,hash);
+    isFileContainsHash(fileName,hashToFunc);
 
   }
 
