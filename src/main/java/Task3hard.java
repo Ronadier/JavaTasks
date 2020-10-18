@@ -15,8 +15,7 @@ public class Task3hard {
 
   private static HashMap<String, Integer> getWordsAndAmount(String str, int maxAmount){
     String a = str.toLowerCase().trim();
-    List<String> subStr = new ArrayList<>();
-    subStr = Arrays.asList(a.split("(?U)\\W+")); //разбиваем на слова. W+ - регулярное выражение для всех знаков препинания, пробелов и пр., (?U) для поддержки юникода
+    List<String> subStr = Arrays.asList(a.split("(?U)\\W+")); //разбиваем на слова. W+ - регулярное выражение для всех знаков препинания, пробелов и пр., (?U) для поддержки юникода
     HashMap<String, Integer> result = new HashMap<>();
     for (String s : subStr ){
       if (Collections.frequency(subStr, s) > maxAmount) {
