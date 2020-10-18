@@ -9,9 +9,7 @@ public class Task4hard {
   public static void main (String[] args) throws IOException {
     BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     List<Integer> a = InputHelper.getIntList();
-    int n;
-    System.out.println("Введите число N");
-    n = Integer.parseInt(reader.readLine());
+    int n = InputHelper.getInt();
     if (isSumTrue(a,n)) System.out.println("True");
     else System.out.println("False");
   }
