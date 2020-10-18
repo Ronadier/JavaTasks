@@ -1,54 +1,29 @@
+import Helpers.InputHelper;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.HashMap;
+import java.util.*;
 
 public class Task3hard {
   public static void main(String[] args) throws IOException {
 
-    String str = getStr();
-    int maxAmount = getInt();
+    String str = InputHelper.getStr();
+    int maxAmount = InputHelper.getInt();
     generateAndPrintJSON(str,maxAmount);
   }
 
-  private static String getStr() throws IOException {
-    BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-    String str = "";
-    while (str.length() == 0) {
-      System.out.println("Введите строку");
-      str = reader.readLine();
-      if (str.length() == 0) System.out.println("Вы ввели пустую строку, введите строку ещё раз");
-    }
-    return str;
-  }
-
-  private static int getInt() throws IOException {
-    BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-    int maxAmount = 0;
-    while (maxAmount <= 0) {
-      System.out.println("Введите число:");
-      maxAmount = Integer.parseInt(reader.readLine());
-      if (maxAmount <= 0 ) System.out.println("Вы ввели число меньше нуля или ноль. Введите число ещё раз");
-    }
-    return maxAmount;
-  }
 
   private static HashMap<String, Integer> getWordsAndAmount(String str, int maxAmount){
     String a = str.toLowerCase().trim();
-    String[] subStr;
-    subStr = a.split("(?U)\\W+"); //разбиваем на слова. W+ - регулярное выражение для всех знаков препинания, пробелов и пр., (?U) для поддержки юникода
-    int[] c = new int[subStr.length];
+    List<String> subStr = new ArrayList<>();
+    subStr = Arrays.asList(a.split("(?U)\\W+")); //разбиваем на слова. W+ - регулярное выражение для всех знаков препинания, пробелов и пр., (?U) для поддержки юникода
     HashMap<String, Integer> result = new HashMap<>();
-    for (int i =0;i<subStr.length;i++) {
-      for (int j=i;j<subStr.length;j++){
-       if (subStr[i].equals(subStr[j])) c[i]++;
+    for (String s : subStr ){
+      if (Collections.frequency(subStr, s) > maxAmount) {
+        result.put(s, Collections.frequency(subStr, s));
       }
     }
-    for (int i=0;i<c.length;i++){
-      if (c[i]>maxAmount) result.put(subStr[i],c[i]);
-    }
+
     return result;
   }
   private static void generateAndPrintJSON(String str, int maxAmount){
@@ -59,6 +34,7 @@ public class Task3hard {
     String json = root.toString();
     System.out.println(json);
   }
+
 }
 
 /*

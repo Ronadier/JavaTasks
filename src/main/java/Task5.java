@@ -10,14 +10,14 @@ public class Task5 {
     BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     System.out.println("Введите строку");
     String str = reader.readLine();
-    String s = replace(str);
+    String s = encode(str);
     System.out.println(); //отступ для красоты
     System.out.println("Зашифрованная строка: ");
     System.out.println(s);
     System.out.println("Расшифрованная строка: ");
-    System.out.println(replaceToOriginal(s));
+    System.out.println(decode(s));
   }
-  private static String replace(String str){
+  private static String encode(String str){
     List<Character> alphabet = initAlph();
     List<Character> alphabetL = initAlphL();
     char[] a = str.toCharArray();
@@ -45,7 +45,7 @@ public class Task5 {
     return str;
   }
 
-  private static String replaceToOriginal(String str){
+  private static String decode(String str){
     List<Character> alphabet = initAlph();
     List<Character> alphabetL = initAlphL();
     char[] a = str.toCharArray();

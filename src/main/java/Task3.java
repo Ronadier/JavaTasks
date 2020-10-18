@@ -1,20 +1,19 @@
-import java.io.BufferedReader;
+import Helpers.InputHelper;
+
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Task3 {
   public static void main(String[] args) throws IOException {
-    BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-    List<String> str = new ArrayList<>();
+    List<String> str = InputHelper.getListStr();
+
+    printResult(str);
+  }
+
+  private static void printResult(List<String> str){
     List<String> result = new ArrayList<>();
-    int a=0;
-    do {
-      System.out.println("Введите элемент: ");
-      str.add(reader.readLine());
-      a++;
-    } while (!(str.get(a-1).equals("")));
+
 
     for (int i = 0; i<str.size();i++){
       String[] words = str.get(i).split("\\s");
@@ -22,11 +21,8 @@ public class Task3 {
         result.add(words[j]);
       }
     }
-
-    for (String s : result) System.out.println(s);
+    result.forEach(System.out::println);
   }
-
-
 }
 
 

@@ -24,8 +24,8 @@ public class Task4 {
 
   public static boolean isSumTrue(List<Integer> a, int n){
     for (int i=0;i<a.size();i++){
-      for (int j = i;j<a.size();j++){
-        if (a.get(i) + a.get(j)==n) return true;
+      for (int j = i;j<a.size()-1;j++){
+        if (a.get(i) + a.get(j+1)==n) return true;
       }
     }
     return false;
