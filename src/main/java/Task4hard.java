@@ -1,22 +1,18 @@
+import Helpers.InputHelper;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
 public class Task4hard {
   public static void main (String[] args) throws IOException {
     BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-    Set<Integer> a = new TreeSet<>();
-    int n,c = 0;
-    do {
-      System.out.println("Введите число номер " + c + " в массив: ");
-      c++;
-      String s = reader.readLine();
-      if (s.equals("")) break;
-      a.add(Integer.parseInt(s));
-    }while (true);
+    List<Integer> a = InputHelper.getIntList();
+    int n = 0;
     System.out.println("Введите число N");
     n = Integer.parseInt(reader.readLine());
     Set<Integer> b = new HashSet<>();

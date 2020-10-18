@@ -59,4 +59,18 @@ public class InputHelper {
     }
     return maxLength;
   }
+
+  public static List<Integer> getIntList() throws IOException {
+    BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    List<Integer> a = new ArrayList<>();
+    int c = 0;
+    do {
+      System.out.println("Введите число номер " + c + " в массив: ");
+      c++;
+      String s = reader.readLine();
+      if (s.equals("")) break;
+      a.add(Integer.parseInt(s));
+    }while (true);
+    return a;
+  }
 }
