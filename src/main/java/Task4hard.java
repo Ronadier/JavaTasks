@@ -9,18 +9,18 @@ public class Task4hard {
   public static void main (String[] args) throws IOException {
     BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     List<Integer> a = InputHelper.getIntList();
-    int n = 0;
+    int n;
     List<Integer> b = new ArrayList<>();
     System.out.println("Введите число N");
     n = Integer.parseInt(reader.readLine());
-    for (int i = 0; i < a.size(); i++){ //Т.к. высчитать одно из слагаемых можно с помощью разности
-      Integer frequency = n - a.get(i); //то делаем лист с элементами сумма-одно из слагаемых (n-a)
-      b.add(frequency);
+    for (Integer integer : a) { //Т.к. высчитать одно из слагаемых можно с помощью разности
+      Integer difference = n - integer; //то делаем лист с элементами сумма-одно из слагаемых (n-a)
+      b.add(difference);
     }
     //дальше - жесть :)
     boolean isSumTrue = false;
     for (int i = 0;i< a.size();i++){
-      if (b.contains(a.get(i)) && b.get(i) != a.get(i)) { //Если лист с разностью содержит элемент a и при этом они не находятся на одной позиции в листе
+      if (b.contains(a.get(i)) && !b.get(i).equals(a.get(i))) { //Если лист с разностью содержит элемент a и при этом они не находятся на одной позиции в листе
         System.out.println("True"); //то всё ок
         isSumTrue = true;
         break;
