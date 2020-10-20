@@ -50,8 +50,6 @@ public class Task6 {
 
   private static ArrayList<Human> initJSON() throws IOException {
     String fileToStr = String.valueOf(Files.readAllLines(Paths.get("users_ds.json")));
-    System.out.println(fileToStr);
-
     JSONArray jsonArray = new JSONArray(fileToStr);
     JSONObject jsonObject;
     int i = 0;
