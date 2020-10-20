@@ -1,5 +1,6 @@
 package Helpers;
 
+import Task6.Human;
 import org.json.JSONArray;
 import org.json.JSONObject;
 

@@ -1,6 +1,12 @@
 package Helpers;
 
+import Task6.Human;
+import Task6.Task6;
+
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class LogicHelper {
   static int getLengthWithoutSpaces(String str){
@@ -28,4 +34,5 @@ public class LogicHelper {
       return replace;
       }
   }
+
 }
