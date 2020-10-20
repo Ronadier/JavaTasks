@@ -1,7 +1,13 @@
 package Helpers;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 public class JSONhelper {
@@ -17,4 +23,5 @@ public class JSONhelper {
     System.out.println(json);
 
   }
+
 }
