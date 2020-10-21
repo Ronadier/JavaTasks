@@ -60,15 +60,17 @@ public class Task8 {
       if (a%r < 10) {
         c.add(String.valueOf(a % r));
       } else switch (a%r){
-        case 11: c.add("A");
+        case 10: c.add("A");
         break;
-        case 12: c.add("B");
+        case 11: c.add("B");
         break;
-        case 13: c.add("C");
+        case 12: c.add("C");
         break;
-        case 14: c.add("D");
+        case 13: c.add("D");
         break;
-        case 15: c.add("E");
+        case 14: c.add("E");
+        break;
+        case 15: c.add("F");
       }
       a = a/16;
     } while (a!=0);
