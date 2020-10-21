@@ -15,7 +15,7 @@ public class GoHelper {
     return b;
   }
 
-  static Integer[][] goComp(Integer[] a, Integer[][] b){
+  static Integer[][] goCompLight(Integer[] a, Integer[][] b){
     int min = b[2][2];
     for (int i = 0;i<a.length;i++){
       for (int j = 0;j<b.length;j++) {

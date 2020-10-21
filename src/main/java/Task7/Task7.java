@@ -22,7 +22,7 @@ public class Task7 {
       String s = InputHelper.getStr();
       if (s.equals("Y")) break;
       else {
-        result.add(GoHelper.goComp(a, result.get(u)));
+        result.add(GoHelper.goCompLight(a, result.get(u)));
       }
     } while (true);
   }
