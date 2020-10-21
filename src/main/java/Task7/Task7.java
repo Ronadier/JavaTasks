@@ -7,18 +7,12 @@ import java.util.ArrayList;
 
 public class Task7 {
   public static void main (String[] args) throws IOException {
-    int u=1;
-    Integer[] a = new Integer[3];
-    Integer[][] b = new Integer[a.length][3];
-    for (int i = 0;i<a.length;i++){
-      for (int j = 0;j<b.length;j++) {
-        b[i][j] = u;
-        u++;
-        System.out.print(b[i][j] + " ");
-      }
-      System.out.println();
-    }
-    u = 0;
+    Integer[] a = InitHelper.initArr1();
+    Integer[][] b = InitHelper.initArr2(a);
+    game(a,b);
+  }
+  private static void game(Integer[] a, Integer[][] b) throws IOException {
+    int u = 0;
     do {
       System.out.println("Ход человека");
       int c = InputHelper.getInt();
@@ -32,7 +26,6 @@ public class Task7 {
       }
     } while (true);
   }
-
 }
 
 /*
