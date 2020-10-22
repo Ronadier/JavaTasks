@@ -44,10 +44,10 @@ public class Task8 {
 
   private static HashMap<Integer, Character> initKeyValue(){
     HashMap<Integer, Character> result = new HashMap<>();
-    char a = 'A';
+    char alphabet = 'A';
     for (int i = 10; i < 36; i++){
-      result.put(i,a);
-      a++;
+      result.put(i,alphabet);
+      alphabet++;
     }
     return result;
   }
