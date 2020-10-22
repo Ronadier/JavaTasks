@@ -1,28 +1,30 @@
 package Task7;
 
+import Helpers.GoHelper;
 import Helpers.InputHelper;
+import Helpers.LogicHelper;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class Task7 {
   public static void main (String[] args) throws IOException {
-    Integer[] a = InitHelper.initArr1();
-    Integer[][] b = InitHelper.initArr2(a);
-    game(a,b);
+    Integer[] gameFieldHorizont = LogicHelper.initArr1Task7();
+    Integer[][] gameFieldAll = LogicHelper.initArr2Task7(gameFieldHorizont);
+    game(gameFieldHorizont,gameFieldAll);
   }
-  private static void game(Integer[] a, Integer[][] b) throws IOException {
+  private static void game(Integer[] gameFieldHorizont, Integer[][] gameFieldAll) throws IOException {
     int u = 0;
     do {
       System.out.println("Ход человека");
-      int c = InputHelper.getInt();
+      int move = InputHelper.getInt();
       ArrayList<Integer[][]> result = new ArrayList<>();
-      result.add(GoHelper.goHuman(a,b,c));
+      result.add(GoHelper.goHuman(gameFieldHorizont,gameFieldAll,move));
       System.out.println("Конец игры? (Y - да, N - нет)");
-      String s = InputHelper.getStr();
-      if (s.equals("Y")) break;
+      String endGame = InputHelper.getStr();
+      if (endGame.equals("Y")) break;
       else {
-        result.add(GoHelper.goCompLight(a, result.get(u)));
+        result.add(GoHelper.goCompLight(gameFieldHorizont, result.get(u)));
       }
     } while (true);
   }

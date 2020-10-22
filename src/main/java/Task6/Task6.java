@@ -1,6 +1,7 @@
 package Task6;
 
-import Helpers.InputHelper;
+import Helpers.*;
+import Helpers.LogicHelper;
 
 import java.io.IOException;
 import java.util.*;
@@ -9,7 +10,7 @@ public class Task6 {
 
   public static void main(String[] args) throws IOException {
     String fileName = "users_ds.json";
-    ArrayList<Human> humans = JSONHelper.initJSON(fileName);
+    ArrayList<Human> humans = JSONHelper.initJSONofHumans(fileName);
     Map<String, Integer> agesConfig = ConfigHelper.agesConfig();
     System.out.println("Страна для поиска");
     String country = InputHelper.getStr();
@@ -17,28 +18,28 @@ public class Task6 {
     int inputAge = InputHelper.getInt();
 
     System.out.println("Люди из страны " + country);
-    PrintHelper.printHelper(LogicHelper.usersFromCountry(humans, country));
+    PrintHelper.printArrayOfHumans(Helpers.LogicHelper.usersFromCountry(humans, country));
     System.out.println();
     System.out.println("Люди возраста " + inputAge + " лет");
-    PrintHelper.printHelper(LogicHelper.usersIndicatedAges(humans, inputAge));
+    PrintHelper.printArrayOfHumans(Helpers.LogicHelper.usersIndicatedAges(humans, inputAge));
     System.out.println();
     System.out.println("Люди старше " + inputAge + " лет");
-    PrintHelper.printHelper(LogicHelper.usersOlderIndicatedAge(humans, inputAge));
+    PrintHelper.printArrayOfHumans(Helpers.LogicHelper.usersOlderIndicatedAge(humans, inputAge));
     System.out.println();
     System.out.println("Люди младше или в возрасте " + inputAge + " лет");
-    PrintHelper.printHelper(LogicHelper.usersYoungeraAndIndicatedAge(humans, inputAge));
+    PrintHelper.printArrayOfHumans(Helpers.LogicHelper.usersYoungeraAndIndicatedAge(humans, inputAge));
     System.out.println();
     System.out.println("Совершеннолетние");
-    PrintHelper.printHelper(LogicHelper.adults(humans, agesConfig));
+    PrintHelper.printArrayOfHumans(Helpers.LogicHelper.getAdultsList(humans, agesConfig));
     System.out.println();
     System.out.println("Тины");
-    PrintHelper.printHelper(LogicHelper.teens(humans, agesConfig));
+    PrintHelper.printArrayOfHumans(Helpers.LogicHelper.getTeensList(humans, agesConfig));
     System.out.println();
     System.out.println("Битые записи");
-    PrintHelper.printHelper(LogicHelper.brokens(humans, agesConfig));
+    PrintHelper.printArrayOfHumans(Helpers.LogicHelper.getBrokensHumanList(humans, agesConfig));
     System.out.println();
     System.out.println("Починеные");
-    LogicHelper.repairBrokenAndPrint(humans, agesConfig);
+    Helpers.LogicHelper.repairBrokenAndPrint(humans, agesConfig);
     System.out.println("В какую страну перевозим?");
     String countryTransfer = InputHelper.getStr();
     System.out.println("Человека с каким id переводим?");

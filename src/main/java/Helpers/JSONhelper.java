@@ -11,8 +11,8 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JSONhelper {
-  public static void generateAndPrintJSON(String str, List<String> forbiddenWords, int maxLength){
+public class JSONHelper {
+  public static void generateAndPrintJSONForTask2(String str, List<String> forbiddenWords, int maxLength){
     // convert Java to json
     JSONObject root = new JSONObject(); // создаем главный объект JSON
     root.put("length", str.length());
@@ -25,7 +25,7 @@ public class JSONhelper {
 
   }
 
-  public static ArrayList<Human> initJSON(String fileName) throws IOException {
+  public static ArrayList<Human> initJSONofHumans(String fileName) throws IOException {
     String fileToStr = String.valueOf(Files.readAllLines(Paths.get(fileName)));
     fileToStr.replace("[","");
     fileToStr.replace("]","");
@@ -51,7 +51,7 @@ public class JSONhelper {
     return humans;
   }
 
-  public static void updateJSON(ArrayList<Human> humans, String fileName) {
+  public static void updateJSONofHumans(ArrayList<Human> humans, String fileName) {
     JSONArray jsonArray = new JSONArray();
     JSONObject jsonObject = new JSONObject();
     try (FileWriter writer = new FileWriter(fileName, false)) {

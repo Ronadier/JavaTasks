@@ -1,5 +1,5 @@
 import Helpers.InputHelper;
-import Helpers.JSONhelper;
+import Helpers.JSONHelper;
 
 import java.io.*;
 import java.util.List;
@@ -10,7 +10,7 @@ public class Task2hard {
     int maxLength = InputHelper.getInt();
     List<String> forbiddenWords = InputHelper.getForbiddenWords();
 
-    JSONhelper.generateAndPrintJSON(str,forbiddenWords,maxLength);
+    JSONHelper.generateAndPrintJSONForTask2(str,forbiddenWords,maxLength);
   }
 }
 /*

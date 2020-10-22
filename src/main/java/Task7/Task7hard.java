@@ -1,6 +1,9 @@
 package Task7;
 
 public class Task7hard {
+  public static void main(String[] args){
+
+  }
 }
 
 /*

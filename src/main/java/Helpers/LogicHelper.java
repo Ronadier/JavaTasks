@@ -1,7 +1,6 @@
 package Helpers;
 
 import Task6.Human;
-import Task6.Task6;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -67,7 +66,7 @@ public class LogicHelper {
     return result;
   }
 
-  public static ArrayList<Human> adults(ArrayList<Human> humans, Map<String, Integer> agesConfig){
+  public static ArrayList<Human> getAdultsList(ArrayList<Human> humans, Map<String, Integer> agesConfig){
     ArrayList<Human> result = new ArrayList<>();
     ArrayList<Integer> ages = new ArrayList<>(agesConfig.values());
     ArrayList<String> countries = new ArrayList<>(agesConfig.keySet());
@@ -77,7 +76,7 @@ public class LogicHelper {
     return result;
   }
 
-  public static ArrayList<Human> teens(ArrayList<Human> humans, Map<String, Integer> agesConfig){
+  public static ArrayList<Human> getTeensList(ArrayList<Human> humans, Map<String, Integer> agesConfig){
     ArrayList<Human> result = new ArrayList<>();
     ArrayList<Integer> ages = new ArrayList<>(agesConfig.values());
     ArrayList<String> countries = new ArrayList<>(agesConfig.keySet());
@@ -87,7 +86,7 @@ public class LogicHelper {
     return result;
   }
 
-  public static ArrayList<Human> brokens(ArrayList<Human> humans, Map<String, Integer> agesConfig){
+  public static ArrayList<Human> getBrokensHumanList(ArrayList<Human> humans, Map<String, Integer> agesConfig){
     ArrayList<Human> result = new ArrayList<>();
     ArrayList<Integer> ages = new ArrayList<>(agesConfig.values());
     ArrayList<String> countries = new ArrayList<>(agesConfig.keySet());
@@ -101,15 +100,15 @@ public class LogicHelper {
   }
 
   public static void repairBrokenAndPrint(ArrayList<Human> humans, Map<String, Integer> agesConfig) throws IOException {
-    ArrayList<Human> result = brokens(humans, agesConfig);
+    ArrayList<Human> result = getBrokensHumanList(humans, agesConfig);
     for (Human h : result){
       if (h.is_teen) h.is_teen = false;
       else h.is_teen = true;
     }
     String fileName = "users_ds_upd.json";
-    JSONhelper.updateJSON(result, fileName);
-    result = JSONhelper.initJSON(fileName);
-    PrintHelper.printHelper(result);
+    JSONHelper.updateJSONofHumans(result, fileName);
+    result = JSONHelper.initJSONofHumans(fileName);
+    PrintHelper.printArrayOfHumans(result);
   }
 
   public static void moveUser(Human human, Map<String, Integer> agesConfig, String country) {
@@ -128,5 +127,24 @@ public class LogicHelper {
       else human.is_teen = false;
       System.out.println("Перевезли человека с id " + human.id + ", которого зовут " + human.name + " в страну " + human.county + " ему " + human.age + " лет, его is_teen - " + human.is_teen);
     }
+  }
+
+  public static Integer[] initArr1Task7(){
+    Integer[] a = new Integer[3];
+    return a;
+  }
+
+  public static Integer[][] initArr2Task7(Integer[] a){
+    int u=1;
+    Integer[][] b = new Integer[a.length][3];
+    for (int i = 0;i<a.length;i++){
+      for (int j = 0;j<b.length;j++) {
+        b[i][j] = u;
+        u++;
+        System.out.print(b[i][j] + " ");
+      }
+      System.out.println();
+    }
+    return b;
   }
 }
