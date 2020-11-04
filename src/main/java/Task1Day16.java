@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Task1Day15 {
+public class Task1Day16 {
   public static void main (String[] args) throws IOException {
     ArrayList<Integer> turn = new ArrayList<>();
 
