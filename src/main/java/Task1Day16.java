@@ -32,15 +32,19 @@ public class Task1Day16 {
   }
 
   private static int getLast(ArrayList<Integer> turn){
+    if (turn.size() !=0){
     int last = turn.get(turn.size()-1);
     turn.remove(turn.size()-1);
     return last;
+    } else return Integer.parseInt(null);
   }
 
   private static int  getFirst(ArrayList<Integer> turn){
-    int first = turn.get(0);
-    turn.remove(0);
-    return first;
+    if (turn.size() !=0) {
+      int first = turn.get(0);
+      turn.remove(0);
+      return first;
+    } else return Integer.parseInt(null);
   }
 }
 
