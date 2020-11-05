@@ -37,6 +37,11 @@
             <artifactId>jackson-mapper-asl</artifactId>
             <version>1.9.13</version>
         </dependency>
+        <dependency>
+        <groupId>com.ibm.icu</groupId>
+        <artifactId>icu4j</artifactId>
+        <version>68.1</version>
+    </dependency>
     </dependencies>
     <build>
         <plugins>
