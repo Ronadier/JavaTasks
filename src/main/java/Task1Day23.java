@@ -20,19 +20,19 @@ public class Task1Day23 {
       this.bullets = 15;
     }
 
-    public void takeAShot(int bullets, int magazins) throws OutOfMagazins{
+    public void takeAShot(int bullets, int magazins) throws OutOfMagazins {
       if (bullets!=0){
         this.bullets = bullets-1;
       } else if (magazins != 0){
         reload(magazins);
         this.bullets = bullets -1;
-      }
+      } else throw new OutOfMagazins("Ну тут уже наши полномочия всё. Магазины кончились.");
     }
   }
 
   static class OutOfMagazins extends Exception{
-    void print(){
-      System.out.println("Ну тут уже наши полномочия всё. Магазины кончились.");
+    public OutOfMagazins(String string) {
+      System.out.println(string);
     }
   }
 }

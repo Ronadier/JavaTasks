@@ -22,7 +22,7 @@ public class Task1Day16 {
     turn.forEach(System.out::println);
     int first = getFirst(turn);
     System.out.println("Первое число : " + first);
-    System.out.println("Список послед удаления первого");
+    System.out.println("Список после удаления первого");
     turn.forEach(System.out::println);
   }
 
