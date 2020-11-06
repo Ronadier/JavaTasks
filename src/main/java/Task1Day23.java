@@ -3,7 +3,7 @@ public class Task1Day23 {
 
   }
 
-  class pistol{
+  static class pistol{
     private int bullets = 15;
     private int magazins = 10; //и не важно, что magazin - журнал. И так понятно :)
 
@@ -23,14 +23,14 @@ public class Task1Day23 {
     public void takeAShot(int bullets, int magazins) throws OutOfMagazins{
       if (bullets!=0){
         this.bullets = bullets-1;
-      } else if (bullets==0&&magazins!=0){
+      } else if (magazins != 0){
         reload(magazins);
         this.bullets = bullets -1;
       }
     }
   }
 
-  class OutOfMagazins extends Exception{
+  static class OutOfMagazins extends Exception{
     void print(){
       System.out.println("Ну тут уже наши полномочия всё. Магазины кончились.");
     }
