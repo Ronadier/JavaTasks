@@ -28,7 +28,7 @@ public class InputHelper {
 
   public static String getYesOrNo () throws IOException {
     BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-    System.out.println("Ввести ещё разок? (+ если да)");
+    System.out.println("Ещё разок? (+ если да)");
     String yesOrNo = reader.readLine();
     return yesOrNo;
   }
