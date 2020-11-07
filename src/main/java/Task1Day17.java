@@ -81,7 +81,7 @@ public class Task1Day17 {
       return BELOW_TWENTY[startInt];
     } else if (startInt < 3 && isFemale) return BELOW_TWENTY_F[startInt];
     else if ( startInt < 100 ) {
-      return lowHundert(startInt);
+      return lowHundred(startInt);
     }
     else if ( startInt < 1000 ) {
       return lowThousand(startInt);
@@ -89,7 +89,7 @@ public class Task1Day17 {
     return null;
   }
 
-  private static String lowHundert (int startInt){
+  private static String lowHundred(int startInt){
     int high = startInt / 10;
     int low = startInt % 10;
     String text = TENS[high-1];
