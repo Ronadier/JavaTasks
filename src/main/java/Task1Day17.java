@@ -32,7 +32,10 @@ public class Task1Day17 {
 
   private static String fromMillionToBillon(int startInt, boolean isFemale){
     String text = "";
-    int tens = (startInt/1000000)%100%10; //получаем разряд единиц (до десяти) для правильного склонения
+    int tens = (startInt/1000000)%100; //получаем разряд единиц для правильного склонения
+    if ((startInt/1000000)%100 > 20) {
+      tens = tens % 10;
+    }
     switch (tens){
       case 1: text = fromOneToThousand(startInt / 1000000, isFemale) + " " + MILLIONS[0];
         break;
@@ -53,7 +56,10 @@ public class Task1Day17 {
 
   private static String fromThousandToMillion(int startInt, boolean isFemale){
     String text = "";
-    int tens = (startInt/1000)%100%10; //получаем разряд единиц (до десяти) для правильного склонения
+    int tens = (startInt/1000000)%100; //получаем разряд единиц для правильного склонения
+    if ((startInt/1000000)%100 > 20) {
+      tens = tens % 10;
+    }
     switch (tens){
       case 1 : text = fromOneToThousand(startInt/1000, isFemale=true) + " " + THOUSANDS[0];
         break;
