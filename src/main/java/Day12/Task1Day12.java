@@ -1,9 +1,11 @@
+package Day12;
+
 import Helpers.InputHelper;
 
 import java.io.IOException;
 
 public class Task1Day12 {
-  public static void main(String[] args) throws IOException {
+  public static void main(String[] args) throws IOException, TimeTravellingException {
     System.out.println("Enter now");
     String now = InputHelper.getStr();
     System.out.println("Enter future");
@@ -12,7 +14,7 @@ public class Task1Day12 {
     System.out.println(timeDifference(now, future));
 
   }
-  private static String timeDifference(String now, String future){
+  static String timeDifference(String now, String future) throws TimeTravellingException {
     int[] nowInt = new int[2];
     int[] futureInt = new int[2];
     int[] result = new int[2];
@@ -24,15 +26,21 @@ public class Task1Day12 {
       futureInt[i] = Integer.parseInt(futureArray[i]);
       result[i] = futureInt[i] - nowInt[i];
     }
-    if (result[1] < 0) {
+    if (result[0] < 0) throw new TimeTravellingException("Второе время в прошлом относительно первого");
+    if (result[1] < 0 && result[0] !=0) {
       result[1] += 60;
-    }
+    } else if (result[1]<0 && result[0] == 0) throw new TimeTravellingException("Второе время в прошлом относительно первого");
     if (result[0] < 10 && result[1] < 10) {
       return ("0" + result[0] + ":" + "0" + result[1]);
     } else if (result[1] < 10) {
       return (result[0] + ":" + "0" + result[1]);
     } else if (result[0] < 10) return ("0" + result[0] + ":" + result[1]);
     return "";
+  }
+  static class TimeTravellingException extends Exception{
+    public TimeTravellingException(String message) {
+      System.out.println(message);
+    }
   }
 }
 
