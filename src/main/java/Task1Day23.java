@@ -8,7 +8,8 @@ public class Task1Day23 {
     private int magazins = 10; //и не важно, что magazin - журнал. И так понятно :)
 
     public int getBulletsAmount() {
-      return bullets;
+      int bulletsAll = bullets + (magazins-1)*15;
+      return bulletsAll;
     }
 
     public int getMagazinsAmount() {
