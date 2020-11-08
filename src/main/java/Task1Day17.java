@@ -95,8 +95,6 @@ public class Task1Day17 {
     }
     else if ( startInt < 1000 ) {
       return lowThousand(startInt);
-    } else if (startInt == 1000) {
-      return BELOW_TWENTY_F[1] + " " + THOUSANDS[0];
     }
     return null;
   }
