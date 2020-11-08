@@ -6,14 +6,16 @@ public class Task1Day26 {
     //тут вызываем какую-нибудь функцию
     int a=0;
     for (int i = 0; i<100000000;i++){
-      a++;
+      for (int j = 0;j<10;j++) {
+        a++;
+      }
     }
     //цикл сверху просто для примера
     long endTime = System.currentTimeMillis();
     long diffMillis = endTime-startTime;
     long diffSecond = diffMillis/1000;
-    System.out.println("Функция выполнилась за "+diffMillis + "мс");
-    System.out.println("Функция выполнилась за "+diffSecond+"с");
+    System.out.println("Функция выполнилась за " + diffMillis + " мс");
+    System.out.println("Функция выполнилась за " + diffSecond + " с");
   }
 }
 
