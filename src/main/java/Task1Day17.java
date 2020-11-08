@@ -61,6 +61,7 @@ public class Task1Day17 {
       tens = tens % 10;
     }
     switch (tens){
+      case 0 :
       case 1 : text = fromOneToThousand(startInt/1000, isFemale=true) + " " + THOUSANDS[0];
         break;
       case 2:
