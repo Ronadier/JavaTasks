@@ -17,8 +17,6 @@ public class Task1Day17 {
     RuleBasedNumberFormat nf = new RuleBasedNumberFormat(Locale.forLanguageTag("ru"), //готовая библиотека под это для проверки
             RuleBasedNumberFormat.SPELLOUT);
     System.out.println(nf.format(startInt));
-
-
     String text = "";
     boolean isFemale = false;
     if (startInt < 1000){
@@ -28,25 +26,41 @@ public class Task1Day17 {
     } else if (startInt < 1000000000) {
       text = fromMillionToBillon(startInt, isFemale);
     }
+    if (startInt%100 > 20 || startInt%100 <= 10) {
+      switch (startInt % 10) {
+        case 1:
+          text += " " + CATS[0];
+          break;
+        case 2:
+        case 3:
+        case 4:
+          text += " " + CATS[1];
+          break;
+        case 0:
+        default:
+          text += " " + CATS[2];
+      }
+    } else text += " " + CATS[2];
       System.out.println(text);
   }
 
   private static String fromMillionToBillon(int startInt, boolean isFemale){
     String text = "";
-    int tens = (startInt/1000000)%100; //получаем разряд единиц для правильного склонения
-    if (tens > 20) {
-      tens = tens % 10;
-    }
-    switch (tens){
-      case 1: text = fromOneToThousand(startInt / 1000000, isFemale) + " " + MILLIONS[0];
-        break;
-      case 2:
-      case 3:
-      case 4:
-        text = fromOneToThousand(startInt / 1000000, isFemale) + " " + MILLIONS[1];
-        break;
-      default: text = fromOneToThousand(startInt / 1000000, isFemale) + " " + MILLIONS[2];
-    }
+    int tens = startInt%10; //получаем разряд единиц для правильного склонения
+    if (startInt%100 > 20 || startInt% 100 <=10) {
+      switch (tens) {
+        case 1:
+          text = fromOneToThousand(startInt / 1000000, isFemale) + " " + MILLIONS[0];
+          break;
+        case 2:
+        case 3:
+        case 4:
+          text = fromOneToThousand(startInt / 1000000, isFemale) + " " + MILLIONS[1];
+          break;
+        default:
+          text = fromOneToThousand(startInt / 1000000, isFemale) + " " + MILLIONS[2];
+      }
+    } else text = fromOneToThousand(startInt / 1000000, isFemale) + " " + MILLIONS[2];
     if (startInt % 1000000 > 1000){
       text +=  " " + fromThousandToMillion(startInt % 1000000, isFemale);
     } else if (startInt % 1000000 != 0){
@@ -60,25 +74,25 @@ public class Task1Day17 {
     if (startInt == 1000) {
       text = BELOW_TWENTY_F[1] + " " + THOUSANDS[0];
     } else {
-      int tens = (startInt / 1000) % 100; //получаем разряд единиц для правильного склонения
-      if (tens > 20) {
-        tens = tens % 10;
-      }
-      switch (tens) {
-        case 1:
-          text = fromOneToThousand(startInt / 1000, isFemale = true) + " " + THOUSANDS[0];
-          isFemale = false;
-          break;
-        case 2: text = fromOneToThousand(startInt / 1000, isFemale = true) + " " + THOUSANDS[1];
-          isFemale = false;
-          break;
-        case 3:
-        case 4:
-          text = fromOneToThousand(startInt / 1000, isFemale) + " " + THOUSANDS[1];
-          break;
-        default:
-          text = fromOneToThousand(startInt / 1000, isFemale) + " " + THOUSANDS[2];
-      }
+      int tens = startInt%10; //получаем разряд единиц для правильного склонения
+      if (startInt%100 > 20 || startInt% 100 <=10) {
+        switch (tens) {
+          case 1:
+            text = fromOneToThousand(startInt / 1000, isFemale = true) + " " + THOUSANDS[0];
+            isFemale = false;
+            break;
+          case 2:
+            text = fromOneToThousand(startInt / 1000, isFemale = true) + " " + THOUSANDS[1];
+            isFemale = false;
+            break;
+          case 3:
+          case 4:
+            text = fromOneToThousand(startInt / 1000, isFemale) + " " + THOUSANDS[1];
+            break;
+          default:
+            text = fromOneToThousand(startInt / 1000, isFemale) + " " + THOUSANDS[2];
+        }
+      } else text = fromOneToThousand(startInt / 1000, isFemale) + " " + THOUSANDS[2];
     }
     if (startInt % 1000 !=0) {
       text += " " + fromOneToThousand(startInt % 1000, isFemale);
