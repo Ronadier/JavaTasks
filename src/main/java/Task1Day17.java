@@ -11,6 +11,7 @@ public class Task1Day17 {
   static final String[] HUNDREDS = { "сто", "двести", "триста", "четыреста", "пятьсот", "шестьсот", "семьсот", "восемmсот", "девятьсот"};
   static final String[] THOUSANDS = {"тысяча", "тысячи", "тысяч"};
   static final String[] MILLIONS = {"миллион", "миллиона", "миллионов"};
+  static final String[] CATS = {"котик", "котика", "котиков"};
   public static void main (String[] args) throws IOException {
     int startInt = InputHelper.getInt();
     RuleBasedNumberFormat nf = new RuleBasedNumberFormat(Locale.forLanguageTag("ru"), //готовая библиотека под это для проверки
@@ -56,20 +57,28 @@ public class Task1Day17 {
 
   private static String fromThousandToMillion(int startInt, boolean isFemale){
     String text = "";
-    int tens = (startInt/1000000)%100; //получаем разряд единиц для правильного склонения
-    if (tens > 20) {
-      tens = tens % 10;
-    }
-    switch (tens){
-      case 0 :
-      case 1 : text = fromOneToThousand(startInt/1000, isFemale=true) + " " + THOUSANDS[0];
-        break;
-      case 2:
-      case 3:
-      case 4:
-        text = fromOneToThousand(startInt/1000, isFemale) + " " + THOUSANDS[1];
-        break;
-      default: text = fromOneToThousand(startInt/1000, isFemale) + " " + THOUSANDS[2];
+    if (startInt == 1000) {
+      text = BELOW_TWENTY_F[1] + " " + THOUSANDS[0];
+    } else {
+      int tens = (startInt / 1000) % 100; //получаем разряд единиц для правильного склонения
+      if (tens > 20) {
+        tens = tens % 10;
+      }
+      switch (tens) {
+        case 1:
+          text = fromOneToThousand(startInt / 1000, isFemale = true) + " " + THOUSANDS[0];
+          isFemale = false;
+          break;
+        case 2: text = fromOneToThousand(startInt / 1000, isFemale = true) + " " + THOUSANDS[1];
+          isFemale = false;
+          break;
+        case 3:
+        case 4:
+          text = fromOneToThousand(startInt / 1000, isFemale) + " " + THOUSANDS[1];
+          break;
+        default:
+          text = fromOneToThousand(startInt / 1000, isFemale) + " " + THOUSANDS[2];
+      }
     }
     if (startInt % 1000 !=0) {
       text += " " + fromOneToThousand(startInt % 1000, isFemale);
@@ -86,6 +95,8 @@ public class Task1Day17 {
     }
     else if ( startInt < 1000 ) {
       return lowThousand(startInt);
+    } else if (startInt == 1000) {
+      return BELOW_TWENTY_F[1] + " " + THOUSANDS[0];
     }
     return null;
   }
